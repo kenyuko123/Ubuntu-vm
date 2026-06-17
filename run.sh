@@ -1,0 +1,59 @@
+#!/bin/bash
+
+clear
+
+echo "██╗  ██╗███████╗███╗   ██╗"
+echo "██║ ██╔╝██╔════╝████╗  ██║"
+echo "█████╔╝ █████╗  ██╔██╗ ██║"
+echo "██╔═██╗ ██╔══╝  ██║╚██╗██║"
+echo "██║  ██╗███████╗██║ ╚████║"
+echo "╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝"
+
+echo
+echo "██╗   ██╗██╗   ██╗"
+echo "╚██╗ ██╔╝██║   ██║"
+echo " ╚████╔╝ ██║   ██║"
+echo "  ╚██╔╝  ██║   ██║"
+echo "   ██║   ╚██████╔╝"
+echo "   ╚═╝    ╚═════╝"
+
+echo
+echo "██╗  ██╗ ██████╗"
+echo "██║ ██╔╝██╔═══██╗"
+echo "█████╔╝ ██║   ██║"
+echo "██╔═██╗ ██║   ██║"
+echo "██║  ██╗╚██████╔╝"
+echo "╚═╝  ╚═╝ ╚═════╝"
+
+echo
+echo "[*] Starting..."
+echo
+
+cd "$(dirname "$0")"
+
+nohup node server.js >/dev/null 2>&1 &
+
+sleep 10
+
+rm -f tunnel.log
+
+cloudflared tunnel --url http://127.0.0.1:7860 > tunnel.log 2>&1 &
+
+while true
+do
+    URL=$(grep -oE 'https://[a-zA-Z0-9.-]+trycloudflare\.com' tunnel.log | head -n 1)
+
+    if [ ! -z "$URL" ]; then
+        echo
+        echo "====================================="
+        echo "Share Link:"
+        echo "$URL"
+        echo "====================================="
+        echo
+        break
+    fi
+
+    sleep 1
+done
+
+wait
