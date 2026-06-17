@@ -4,8 +4,8 @@
 
 🚀 **An interactive, lightweight, browser-accessible virtualization engine.**
 
-👤 **Operator:** ImGunpoint  
-🛠️ **Engineered By:** ImGunpoint
+👤 **Operator:** Kenyuko  
+🛠️ **Engineered By:** Kenyuko
 
 ---
 
@@ -26,7 +26,7 @@ To safeguard proprietary implementation structures, the internal mechanics are s
 
 ## 🔒 Copyright & Intellectual Property Notice
 
-**Copyright © 2026 ImGunpoint. All rights reserved.**
+**Copyright © 2026 Kenyuko. All rights reserved.**
 
 ### 🚫 Strict Anti-Plagiarism & Usage Restrictions
 
